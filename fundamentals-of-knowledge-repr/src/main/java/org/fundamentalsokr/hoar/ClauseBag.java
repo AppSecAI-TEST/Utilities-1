@@ -56,6 +56,16 @@ public enum ElementalClause {
 
 
 abstract class Clause{
+	boolean marked = false;
+	
+	public boolean isMarked() {
+		return marked;
+	}
+
+	public void mark() {
+		marked = true;
+	};
+		
 	public abstract String DumpClause();
 };
 

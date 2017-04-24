@@ -29,7 +29,7 @@ public class MarkingSolver {
 	private Map<String,DerivingClause> derivers = new HashMap<String,DerivingClause>();
 	private Set<String> marked = new HashSet<String>();
 
-	private String dump=null;
+	private String dump=new String();
 
 	// how marking done:
 	// 
@@ -59,14 +59,19 @@ public class MarkingSolver {
 
 		MarkingSolver solver= new MarkingSolver(bag);
 
-		solver.FillStructures();
-
-		solver.makeSolutionWithDump();
-		solver.DumpSolution();
+		solver.solve();
+		
+		solver.dumpSolution();
 
 	}
 
-	private void FillStructures(){
+	public void solve() {
+		fillStructures();
+		makeSolutionWithDump();
+	}
+	
+
+	private void fillStructures(){
 		derivers = new HashMap<String, DerivingClause>();
 		for(DerivingClause deriving : clauseBag.derivings){
 			derivers.put(deriving.getKnownFirst() + "#" +
@@ -77,7 +82,7 @@ public class MarkingSolver {
 		// to fill next
 	}
 
-	private void DumpSolution() {
+	public void dumpSolution() {
 		System.out.println(dump);
 	}
 
@@ -86,16 +91,17 @@ public class MarkingSolver {
 		setDump(getDump() + "Marking Initials:\n");
 
 		for(InitialClause i: clauseBag.initials){
+			i.mark();
 			marked.add(i.getInitiator());
 			setDump(getDump() + "marked clause: " + i.DumpClause() +"\n");
 		}
-
-		int tableSize = derivers.values().size()+1;
 		
 		setDump(getDump() + "Marking Derivers:\n");
-		while(!derivers.isEmpty() && derivers.values().size()<tableSize){
+		int imarked = -1;
+		
+		while(imarked<marked.size()){
 
-			tableSize = derivers.values().size();
+			imarked = marked.size();
 			// could be optimized there!
 			for(String d: derivers.keySet()){
 				String[] keys= d.split("#");
@@ -108,9 +114,11 @@ public class MarkingSolver {
 
 				if(marked.contains(keys[0]) && marked.contains(keys[1])) {
 					DerivingClause derived = derivers.get(d);
+					if(derived.isMarked())
+						continue; // target already marked
 					marked.add(derived.getDerived());
 					setDump(getDump() + "marked by new rule:" + derived.DumpClause() +"\n");
-					derivers.remove(d);
+					derived.mark();
 				}
 				// only those that processed derivers process
 			}
