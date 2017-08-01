@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data-sources>
+	<data-source id="postgres-jdbc-15d8acad7cc-686f243bf5b9a409" provider="postgresql" driver="postgres-jdbc" name="PostgreSQL - postgres" save-password="true" show-system-objects="true" read-only="false">
+		<connection host="localhost" port="5432" server="" database="db_test" url="jdbc:postgresql://localhost:5432/db_test" user="postgres" password="AwsVNEZRQQVl8w==" type="test">
+			<property name="connectTimeout" value="20"/>
+			<property name="loginTimeout" value="20"/>
+			<provider-property name="@dbeaver-show-non-default-db@" value="false"/>
+			<network-handler type="CONFIG" id="postgre_ssl" enabled="false" save-password="false"/>
+			<network-handler type="TUNNEL" id="ssh_tunnel" enabled="false" save-password="false">
+				<property name="sshConnectTimeout" value="10000"/>
+				<property name="authType" value="PASSWORD"/>
+				<property name="port" value="22"/>
+			</network-handler>
+			<network-handler type="PROXY" id="socks_proxy" enabled="false" save-password="false">
+				<property name="socks-port" value="1080"/>
+			</network-handler>
+		</connection>
+	</data-source>
+</data-sources>

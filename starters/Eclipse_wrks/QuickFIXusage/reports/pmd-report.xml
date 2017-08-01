@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2012-09-29T19:51:58.176">
+<file name="src/ApplicationImpl.java">
+<violation beginline="7" endline="87" begincolumn="0" endcolumn="0" rule="NoPackage" ruleset="Naming Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#NoPackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="14" endline="14" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'sessionId' is not assigned and could be declared final
+</violation>
+<violation beginline="15" endline="15" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'sessionId' is not assigned and could be declared final
+</violation>
+<violation beginline="24" endline="24" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="32" endline="32" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'sessionId' is not assigned and could be declared final
+</violation>
+<violation beginline="33" endline="33" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'message' is not assigned and could be declared final
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'sessionId' is not assigned and could be declared final
+</violation>
+<violation beginline="43" endline="43" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+<violation beginline="55" endline="55" begincolumn="0" endcolumn="0" rule="SystemPrintln" ruleset="Java Logging Rules" package="(default)" class="ApplicationImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/logging-java.html#SystemPrintln" priority="2">
+System.out.print is used
+</violation>
+</file>
+<file name="src/Entrance.java">
+<violation beginline="8" endline="69" begincolumn="0" endcolumn="0" rule="NoPackage" ruleset="Naming Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#NoPackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="8" endline="69" begincolumn="0" endcolumn="0" rule="UseSingleton" ruleset="Design Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UseSingleton" priority="3">
+All methods are static.  Consider using Singleton instead.  Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+</violation>
+<violation beginline="11" endline="11" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like PLEASE_PROVIDE_ARGS
+</violation>
+<violation beginline="17" endline="23" begincolumn="0" endcolumn="0" rule="JUnit4TestShouldUseTestAnnotation" ruleset="Migration Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/migrating.html#JUnit4TestShouldUseTestAnnotation" priority="3">
+JUnit 4 tests that execute tests should use the @Test annotation
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like i
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'i' could be declared final
+</violation>
+<violation beginline="20" endline="20" begincolumn="0" endcolumn="0" rule="OnlyOneReturn" ruleset="Controversial Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#OnlyOneReturn" priority="3">
+A method should have only one exit point, and that should be the last statement in the method
+</violation>
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="SignatureDeclareThrowsException" ruleset="Type Resolution Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/typeresolution.html#SignatureDeclareThrowsException" priority="3">
+A method/constructor shouldn't explicitly throw java.lang.Exception
+</violation>
+<violation beginline="30" endline="30" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'args' is not assigned and could be declared final
+</violation>
+<violation beginline="32" endline="67" begincolumn="0" endcolumn="0" rule="DataflowAnomalyAnalysis" ruleset="Controversial Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DataflowAnomalyAnalysis" priority="5">
+Found 'DU'-anomaly for variable 'logger' (lines '32'-'67').
+</violation>
+<violation beginline="32" endline="32" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'logger' could be declared final
+</violation>
+<violation beginline="36" endline="36" begincolumn="0" endcolumn="0" rule="OnlyOneReturn" ruleset="Controversial Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#OnlyOneReturn" priority="3">
+A method should have only one exit point, and that should be the last statement in the method
+</violation>
+<violation beginline="42" endline="42" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like b
+</violation>
+<violation beginline="44" endline="44" begincolumn="0" endcolumn="0" rule="CompareObjectsWithEquals" ruleset="Design Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#CompareObjectsWithEquals" priority="3">
+Use equals() to compare object references.
+</violation>
+<violation beginline="46" endline="46" begincolumn="0" endcolumn="0" rule="OnlyOneReturn" ruleset="Controversial Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#OnlyOneReturn" priority="3">
+A method should have only one exit point, and that should be the last statement in the method
+</violation>
+<violation beginline="49" endline="49" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'opo' could be declared final
+</violation>
+<violation beginline="56" endline="56" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'application' could be declared final
+</violation>
+<violation beginline="57" endline="58" begincolumn="0" endcolumn="0" rule="LocalVariableCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Entrance" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'settings' could be declared final
+</violation>
+</file>
+<file name="src/Messages.java">
+<violation beginline="6" endline="26" begincolumn="0" endcolumn="0" rule="ClassWithOnlyPrivateConstructorsShouldBeFinal" ruleset="Design Rules" package="(default)" class="Messages" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#ClassWithOnlyPrivateConstructorsShouldBeFinal" priority="1">
+A class which only has private constructors should be final
+</violation>
+<violation beginline="6" endline="26" begincolumn="0" endcolumn="0" rule="NoPackage" ruleset="Naming Rules" package="(default)" class="Messages" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#NoPackage" priority="3">
+All classes and interfaces must belong to a named package
+</violation>
+<violation beginline="7" endline="7" begincolumn="0" endcolumn="0" rule="LongVariable" ruleset="Naming Rules" package="(default)" class="Messages" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#LongVariable" priority="3">
+Avoid excessively long variable names like MESSAGES_NOT_IMPLEMENTED
+</violation>
+<violation beginline="18" endline="18" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="(default)" class="Messages" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'key' is not assigned and could be declared final
+</violation>
+<violation beginline="20" endline="20" begincolumn="0" endcolumn="0" rule="OnlyOneReturn" ruleset="Controversial Rules" package="(default)" class="Messages" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#OnlyOneReturn" priority="3">
+A method should have only one exit point, and that should be the last statement in the method
+</violation>
+</file>
+</pmd>

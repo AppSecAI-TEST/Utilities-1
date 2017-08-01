@@ -1,0 +1,6 @@
+<!--defines original folder mask ignored, hardcoded for the moment
+special defined values: currentDate(format) - currentdate 
+-->
+<fromPattern>(e:)|(d:)\{currentDate(ddmm)}\*.java</fromPattern>
+<!--defines how current date processed-->
+<toHome>(e:)|(d:)\{currentDate}\*.java</toHome>

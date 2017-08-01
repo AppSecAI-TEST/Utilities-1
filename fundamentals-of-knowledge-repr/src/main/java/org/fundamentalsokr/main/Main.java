@@ -2,8 +2,13 @@ package org.fundamentalsokr.main;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
+
+import org.fundamentalsokr.hoar.ClauseBag.ElementalClause;
+import org.fundamentalsokr.hoar.ClauseBag;
+import org.fundamentalsokr.hoar.MarkingSolver;
 // author: roman.gritsulyak@gmail.com 
 // please don't redistribute without permit
+// TODO complete
 public class Main {
 
 	private Scanner s;
@@ -18,10 +23,12 @@ public class Main {
 	}
 	
 	private void runHoar(){
+		ClauseBag bag = new ClauseBag();
 		//  see Max Kanovich slides phd lectures HSE 11 SAT 2016
 		System.out.println("input implications in following forms:");
 		System.out.println("a b c : three symbols: for the implication ((a AND b) -> c ) = T");
-		System.out.println("a b c . : four symbols: for the implication ((a AND b) -> c ) = T also with:");
+	//  unimplemented
+	//	System.out.println("a b c . : four symbols: for the implication ((a AND b) -> c ) = T also with:");
 		System.out.println("         ((a AND c) -> b ) = T and ((a AND c) -> b ) = T");
 		System.out.println("b : one symbol: for the (b=T) clause");
 		System.out.println("s . : one symbol and dot - for the final goal, to start algorithm"
@@ -42,58 +49,54 @@ public class Main {
 				System.exit(-1);
 			}
 				
-			StringTokenizer st = new StringTokenizer(str);
-			
-			String[] tokens= new String[4];
-			int clauseCounter = 0;
-			
-	    	while (st.hasMoreTokens()) {
-	    		tokens[clauseCounter] = st.nextToken();
-	    		clauseCounter ++;
-	    		if(clauseCounter>4)
-	    		{
-	    			if(st.hasMoreTokens()) {
-	    				System.out.println("too much arguments, should be 1-3");
-	    			} 
-	    				break;
-	    		}
+			String[] tokens = str.split(" ");
+
+	    	if(tokens.length>4){
+	    			System.err.println("too much arguments, should be 1-3");
+	    			break;
 	    	}
 		
 	    	
-	    	if(clauseCounter==1){
-	    		// marking initial clause 
-	    		// TODO
-	    	} else if(clauseCounter==2){
+	    	if(tokens.length==1){
+	    		bag.addClause(ElementalClause.INITIAL, tokens);
+	    	} else if(tokens.length==2){
 	    		// marking end
-	    		// TODO
-	    	} else if(clauseCounter==3) {
+	    		bag.addClause(ElementalClause.FINAL, new String[]{tokens[0]});
+	    		end = true;
+	    	} else if(tokens.length==3) {
 	    		// marking clause
-	    		// TODO
+	    		bag.addClause(ElementalClause.DERIVING, tokens);
 	    	} else {
-		    	System.out.println("rule ignored, Incorrect clause count:" + clauseCounter );
+		    	System.err.println("rule ignored, Incorrect clause count:" + tokens.length );
 	    	}
 	    	
-	    	System.out.println("added clause:"  );
-		
 		} while (!end);
+		
+		
+		if(!end)
+			System.exit(-1);
+		
+		String dump = bag.DumpBag();
+		System.out.println("Got following rule set:");
+		System.out.println(dump);
+		
+		MarkingSolver solver= new MarkingSolver(bag);
+
+		solver.solve();
+		solver.dumpSolution();
 		
 		System.out.println("Got end of rules. Started rules processing");
 		
 	}
 	
 	private void runPath(){
-		// to do
+		// TODO
+		System.out.println("path unimplemented for the moment");
 	}
 	
 	public static void main(String[] args){
 		
 		Main program = new Main();
-		
-		System.out.println("args are:"); 
-		
-		for(String str:args) {
-			System.out.println(str);
-		}
 		
 		boolean recognized = true;
 		

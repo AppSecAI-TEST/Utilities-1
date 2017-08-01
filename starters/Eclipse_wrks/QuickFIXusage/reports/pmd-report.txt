@@ -1,0 +1,36 @@
+
+src/ApplicationImpl.java:7	All classes and interfaces must belong to a named package
+src/ApplicationImpl.java:14	Parameter 'sessionId' is not assigned and could be declared final
+src/ApplicationImpl.java:15	System.out.print is used
+src/ApplicationImpl.java:23	Parameter 'sessionId' is not assigned and could be declared final
+src/ApplicationImpl.java:24	System.out.print is used
+src/ApplicationImpl.java:32	Parameter 'sessionId' is not assigned and could be declared final
+src/ApplicationImpl.java:33	System.out.print is used
+src/ApplicationImpl.java:42	Parameter 'message' is not assigned and could be declared final
+src/ApplicationImpl.java:42	Parameter 'sessionId' is not assigned and could be declared final
+src/ApplicationImpl.java:43	System.out.print is used
+src/ApplicationImpl.java:55	System.out.print is used
+src/Entrance.java:8	All classes and interfaces must belong to a named package
+src/Entrance.java:8	All methods are static.  Consider using Singleton instead.  Alternatively, you could add a private constructor or make the class abstract to silence this warning.
+src/Entrance.java:11	Avoid excessively long variable names like PLEASE_PROVIDE_ARGS
+src/Entrance.java:17	JUnit 4 tests that execute tests should use the @Test annotation
+src/Entrance.java:18	Avoid variables with short names like i
+src/Entrance.java:18	Local variable 'i' could be declared final
+src/Entrance.java:20	A method should have only one exit point, and that should be the last statement in the method
+src/Entrance.java:30	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/Entrance.java:30	A method/constructor shouldn't explicitly throw java.lang.Exception
+src/Entrance.java:30	Parameter 'args' is not assigned and could be declared final
+src/Entrance.java:32	Found 'DU'-anomaly for variable 'logger' (lines '32'-'67').
+src/Entrance.java:32	Local variable 'logger' could be declared final
+src/Entrance.java:36	A method should have only one exit point, and that should be the last statement in the method
+src/Entrance.java:42	Avoid variables with short names like b
+src/Entrance.java:44	Use equals() to compare object references.
+src/Entrance.java:46	A method should have only one exit point, and that should be the last statement in the method
+src/Entrance.java:49	Local variable 'opo' could be declared final
+src/Entrance.java:56	Local variable 'application' could be declared final
+src/Entrance.java:57	Local variable 'settings' could be declared final
+src/Messages.java:6	A class which only has private constructors should be final
+src/Messages.java:6	All classes and interfaces must belong to a named package
+src/Messages.java:7	Avoid excessively long variable names like MESSAGES_NOT_IMPLEMENTED
+src/Messages.java:18	Parameter 'key' is not assigned and could be declared final
+src/Messages.java:20	A method should have only one exit point, and that should be the last statement in the method
