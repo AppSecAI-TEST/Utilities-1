@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 TRANSITIONAL//EN"
+"http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<title>simple online code snipplets highlite/color tool</title>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head>
+<body onload="changeschema();">
+<h2>Simple online source snipplets highliter</h2>
+javascript based.
+<a href="http://roman.gritsulyak.googlepages.com">Main page of the site.</a>
+<a href="http://rgritsulyak.blogspot.com">Blog entry describing implementation details, related to the code.</a><br>
+<table><tr><td><h3>Code for formating:&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="process();">Process It!</button><br>
+</h3>
+<span id="src-span">
+<textarea id="src" name="source" cols=80 rows=25>
+</textarea>
+</span></td><td>
+<h3>Output code for pasting on page:</h3>
+<span id="res-span">
+<textarea id="res" name="res" cols=80 rows=25>
+</textarea>
+</span></td></tr></table>
+<br>
+<hr>
+preview of outputted code:
+<hr>
+<pre>
+<span id="out">
+</span>
+</pre><hr>
+<h3>.js high-lite schema definition:</h3><br>
+Insert path in web to your schema in text area.
+<input id="ctl-file" value="basic.js.txt"></input>
+<button onclick="changeschema();">Use this schema:</button> <!-- <button text="check_code" onclick="check_code();">check code:</button> -->
+<iframe id="schema_exec"
+src ="basic.js.txt" 
+width="20%">
+</iframe>
+<hr>
+<div id="current_ctl">basic.js.txt</div>
+<br>
+<hr><a href="">go-to main page</a><hr>
+Written in Sunday night hours, for purposes of posting to my blog. GNU source-highlite, 
+that I recommend, for posting code on pages, gives me an output, that is too formatted,
+to fit blogger page, though I wanted more flexible solution.
+<p>
+It Doesn't require sending your code to server, all done on client side.
+It is designed for Mozilla Firefox 2.0, no time for other unused browsers. 
+It is not very clear with syntax. It processes only basic forms. 
+It is intended for creation of markup/colored template of code snipplet for blog, 
+but not for the kilobytes of code. However, for me, alfa version it already useful.
+</p>
+By default, it combines features of perl, c++, java,shell,ksh,bash,and javascript 
+for highlighting/colorizing code, because I generally use these languages
+Regular expressions used for defining code elements that have to be formatted.<br>
+Regular expressions defined in .js file, that can be dynamically included.
+<hr>
+<pre>
+Author: Roman T. Gritsulyak, 2008. code-hi v. 0.4.0 (alfa). 
+You can use this page, modify, and redistribute, under License: 
+<a href="http://creativecommons.org/licenses/by/3.0/" rel="license">Creative Commons Attribution 3.0 Unported License</a> and/or <a href="http://roman.gritsulyak.googlepages.com/mit.html">Software Copyleft</a> 
+</pre>
+
+<script language="javascript" type="text/javascript">
+var blocks;
+var keywords;
+var es;
+
+var code_for;
+
+function changeschema()
+{
+try{var scr = document.getElementById("ctl-file").value;} catch(err) {scr="basic.js.txt"};
+
+document.getElementById("current_ctl").innerHTML=scr;
+//var s=document.createElement("script");
+//  s.setAttribute("type","text/javascript");
+//  s.setAttribute("src", scr);
+document.getElementById("schema_exec").setAttribute("src", scr);
+code_for=document.getElementById("schema_exec").contentDocument.body.textContent;
+//document.getElementById("out").innerHTML=code_for;
+}
+
+function check_code() {
+document.getElementById("src").innerHTML=code_for;
+}
+
+function tok()
+{this.src=new Array();
+ this.el_type=new Array();};
+
+function process()
+{
+var inisrc=document.getElementById("src").value;
+var to_join = new Array();
+var i,j,k;
+var mregex;
+
+eval(code_for);
+
+var strout=inisrc;
+var mrep;
+var tempstr;
+var temkeys;
+var tempk;
+//process keywords
+
+for(i=0;i<keywords.length;i++)
+{  // alert(keywords[i].vals);
+    mrep = new RegExp(keywords[i].vals,"gm");
+    strout = strout.replace(mrep,keywords[i].tag_begin + "$&"
+    + keywords[i].tag_end)
+};
+ 
+
+document.getElementById("res").innerHTML+= "___\n " + strout + "____\n";
+
+// for (i=0;i<keywords.length; i++){
+//   for(j=0;j<keywords[i].vals.length;j++){
+//	      mrep = new RegExp("_templ_"+i+"_" +j+"_","mg" );
+//	      strout = strout.replace(mrep,keywords[i].vals[j]);
+//	      };
+//};
+
+
+document.getElementById("res").innerHTML+= "___\n " + strout + "____\n";
+
+
+for(i=0;i<blocks.length;i++)
+{
+ var strreg = "(" + blocks[i].begin + ".*?" + blocks[i].end +")";
+  var mregex = new RegExp(strreg, "mg" );
+  document.getElementById("res").innerHTML+=mregex;
+  to_join[i] = new tok();
+  to_join[i].src = inisrc.match(mregex);
+ 
+  document.getElementById("res").innerHTML+=to_join.src;
+  if (to_join[i].src != null){
+	  //  alert(to_join[i].src.length);
+    for(j=0; j<to_join[i].src.length ; j++){
+       try{	
+       document.getElementById("res").innerHTML+=
+             "\n__reg__:" + to_join[i].src[j];	  
+       repl_reg = RegExp(to_join[i].src[j],"mg");
+       document.getElementById("res").innerHTML+=
+              "\n__reg_prepared__:" + repl_reg;
+       strout=strout.replace(repl_reg, blocks[i].tag_begin + 
+	"__templ_" + j + "_NOT_USE_templ_"+i+"_" + blocks[i].tag_end);    
+                    }catch(err){};                   
+   } 
+ }
+};
+
+document.getElementById("res").innerHTML+= "___\n " + strout + "____\n";
+
+for(i=0;i<blocks.length;i++) {
+
+  if(to_join[i].src != null) 
+    { 
+      for(j=0; j<to_join[i].src.length ; j++){
+         var regu = new RegExp("__templ_"+j+"_NOT_USE_templ_"+i+"_","mg");
+	 strout=strout.replace(regu, to_join[i].src[j]);
+				    }
+    }
+  };
+// alert("ready to place final result:");
+document.getElementById("out").innerHTML = strout;
+document.getElementById("res").textContent = document.getElementById("out").innerHTML;
+};
+</script>
+<p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-html401-blue"
+        alt="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+  </p>
+</body>
+</html>
