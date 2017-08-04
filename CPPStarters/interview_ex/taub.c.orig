@@ -1,0 +1,155 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+int cpidgeons=0;
+
+void loose_half(int flought[2])
+{
+    int j;
+    // loosing pidgeon simulation:
+     for(j=0;j<2;j++){
+       int r=rand();
+       if(r>RAND_MAX/2)
+       { 
+         if(flought[j]>-1)
+         {  printf("pidgeon %d lost\n", j);
+            flought[j]=-1;
+            cpidgeons++;
+	  }
+       }
+     }
+}
+
+int main(int argc, char ** argv)
+{
+  // roman.gritsulyak@gmail.com:
+  // pidgeon task
+  // задача допускает множество интерпретаций и соотвественно
+  // множество решений, все решения привести невозможно ввиду 
+  // лимитов времени
+  // допущения:
+  // код 6циферный
+  // - голубь если долетает, то гарантировано долетает 
+  // за какое-то определенное время 
+  // - алфавит ограничен цифрами
+  // - цена голубя << кол.во денег на счету,
+  // - голубей не больше контанты, например 1000 
+  // другими словами получить код важнее, чем сэкономить на голубях
+  // - в задаче требуется привести пример возможной коммуникации
+  // - перехват и подмена сообщения невозможны 
+  // - предполагается что в программе не требуется демонстрация 
+  // многопоточности
+  // при других допущениях, решение будет другим.
+
+  /*
+   решение возможно неоптимально, но возможно вполне 
+   представлен пример следущего протокола:
+   1) сторона 1 шлет голубя 1 с первой частью сообщения 
+   и с пометкой его номера и части сообщения
+   2) сторона 1 шлет голубя 2 с сторой частью сообщения 
+   и с пометкой его номера и части сообщения 
+   3) сторона 2 ждет время, необходимое для получения 
+   4) если сторона 2 получила обе части она шлет их обратно с ответом 3)
+   5) если сторона 2 получила всего одного голубя, она записывает часть ответа
+	и шлет голубя обратно 
+   6) если сторона 2 не получила голубей - ждет переотправки
+   7) сторона 1 не получив ни одного ответа - повторяет с пункта 1) 
+   8) сторона 1 получив ответ, отсылает недостающую часть 
+   9) сторона 2 ожидает требуемое время, и переходит к пункту 4)
+*/
+
+  int a; // code
+  // int cpidgeons=0; // pidgeons counter  
+  // delivered pidgeons
+  // slot 0 for 1st pidgeon
+  // slot 2 for 2st pidgeon
+  int onfly[2]={-1,-1};
+  int received=0; 
+  int i=0; // iterator
+  int j=0; // onfly iterator
+  bool ack[2]={false,false};
+  bool rec[2]={false,false};
+
+char *end;
+char buf[7];
+
+do {
+     if (!fgets(buf, sizeof buf, stdin))
+        break;
+     // remove \n
+     //buf[strlen(buf) - 1] = 0;
+
+     a = strtol(buf, &end, 10);
+} while (end != buf + strlen(buf));
+   
+  printf("code got: %d\n",a);
+
+  int part[2];
+  part[0] = a/1000;
+  part[1] = a%1000+1000;
+
+  printf("part0 : %d\n", part[0]); 
+  printf("part1 : %d\n", part[1]);  
+
+  while(true)
+  { 
+  // filling ack
+    for(j=0;j<2;j++)
+    {
+      if(onfly[j]>-1)
+	{ 
+        i=onfly[j]%1000;
+	printf("side 1 got pidgeon with part %d\n",i );
+	ack[j] = true;
+        onfly[j] = -1; //
+	}  	
+    } 	
+    
+    if(ack[0]&&ack[1])
+      break;
+  
+  // sending required pidgeons
+    for(j=0;j<2;j++)
+    {
+      if(!ack[j]) 
+      {
+        printf("side 1 sending %d in part %d\n",part[j], j);	
+        onfly[j]=part[j];
+      }
+    }
+   
+  loose_half(onfly);
+
+  // side 2 part process;  
+  // if(i==0) do nothing; redelivery
+    for(j=0;j<2;j++)
+    {
+      if(onfly[j]>-1)
+      {
+        i=onfly[j]/1000;
+	printf("side 2 received %d part of message\n",i);
+	if(!rec[i])
+         { 
+           printf("adding to code its part %d, from received:%d\n", 
+		i,onfly[j]);
+           // update code by correspondent part
+           received+=(onfly[j]%1000)*(i==0?1000:1);     	  	   
+           rec[i]=true;
+           // and send him back
+           printf("side 2 send pidgeon with value %d back\n",onfly[j]);
+         }
+      }
+    }    
+
+    // side 2 just send pidgeons back	
+    // loosing pidgeon simulation:
+    loose_half(onfly);
+  }
+  
+  printf("message on side 2 side is %d: %d pidgeons lost", 
+	received, cpidgeons);
+
+  return 0;
+}
+
