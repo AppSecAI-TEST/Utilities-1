@@ -1,0 +1,2 @@
+serviceClass: com.gritsulyak.webtest.client.GreetingService
+path: 9506D5D077F75D4F663F3731D126952F.gwt.rpc
